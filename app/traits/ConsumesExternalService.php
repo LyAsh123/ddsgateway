@@ -11,6 +11,9 @@ trait ConsumesExternalService
  // note form params and headers are optional
  public function performRequest($method, $requestUrl,$form_params =[],$headers =[])
  {
+	 if(isset(this->secret)){
+		 $headers['Authorization'] = this->secret;
+	 }
  // create a new client request
  $client = new Client(['base_uri' => $this->baseUri,]);
 
